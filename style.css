@@ -1,0 +1,105 @@
+ /*gerenal*/
+
+ @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Trocchi&display=swap');
+ /*@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');*/
+ 
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ 
+ :root{
+     --text-color: white;
+     --accent-color: rgb(199, 121, 69);
+     --background-color: rgb(59, 62, 66);
+     --font-size-nav: 1.5rem;
+     --font-weight-nav: 300;
+     --font-size-nav-hovered: 1.7rem;
+     --font-weight-nav-hovered: 600;
+ }
+
+ /*.jetbrains-mono-regular {*/
+ /*    font-family: "JetBrains Mono", monospace;*/
+ /*    font-optical-sizing: auto;*/
+ /*    font-weight: var(--font-weight-nav);*/
+ /*    font-style: normal;*/
+ /*}*/
+
+ /*.trocchi-regular {*/
+ /*    font-family: "Trocchi", serif;*/
+ /*    font-weight: 400;*/
+ /*    font-style: normal;*/
+ /*}*/
+ 
+ body{
+     font-family: "JetBrains Mono", monospace;
+     font-optical-sizing: auto;
+     font-weight: var(--font-weight-nav);
+     font-style: normal;
+     
+     background-color: var(--background-color);
+     color: var(--text-color);
+ }
+ 
+ html{
+     scroll-behavior: smooth;
+ }
+ 
+ p{
+     color: var(--text-color);
+ }
+ 
+ /* transition */
+ 
+ a, 
+ .btn{
+     display: inline-block;
+     transition: all 300ms ease;
+ }
+ 
+ /*desktop nav*/
+ 
+ nav, .nav-links{
+     display: flex;
+ }
+ 
+ nav{
+     justify-content: space-around;
+     align-items: center;
+     height: 17vh;
+ }
+ 
+ .nav-links{
+     gap: 2rem;
+     list-style: none;
+     font-size: var(--font-size-nav);
+ }
+ 
+ a{
+     color: var(--text-color);
+     text-decoration: none;
+     /*text-decoration: underline;*/
+     /*text-decoration-color: white;*/
+ }
+ 
+ a:hover, a:active{
+     color: var(--accent-color);
+     /*font-size: var(--font-size-nav-hovered);*/
+     transform: scale(1.2);
+     transform-origin: center center;
+     font-weight: var(--font-weight-nav-hovered);
+     
+     /*text-decoration: underline;*/
+     /*text-underline-offset: 1rem;*/
+ }
+ 
+ .logo{
+     font-family: "Trocchi", serif;
+     font-weight: 400;
+     font-style: normal;
+     font-size: 2.5rem;
+ }
+ 
+ /* hamburger manu */
+ 
+ 
