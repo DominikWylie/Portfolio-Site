@@ -34,4 +34,8 @@
     .project-card h2 {
         font-size: clamp(0.5rem, 6vw, 1.5rem);
     }
+
+    #cover-statement{
+        padding: 1rem;
+    }
 }
