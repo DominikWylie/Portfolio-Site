@@ -10,7 +10,7 @@
 
 :root {
     --text-color: white;
-    --accent-color: rgb(199, 121, 69);
+    --accent-color: rgb(231, 137, 45);
     --background-color: rgb(59, 62, 66);
     --font-size-nav: 1.5rem;
     --font-weight-nav: 300;
@@ -103,6 +103,7 @@ a {
     font-weight: 400;
     font-style: normal;
     font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--accent-color);
 }
 
 .logo:hover {
@@ -186,7 +187,7 @@ a {
     padding-right:clamp(0rem, 10vw, 20rem);
     /*padding-left:4rem;*/
     /*padding-right:4rem;*/
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .projects{
@@ -209,4 +210,44 @@ a {
     /*font-size: clamp(0.5rem, 15vw, 1.5rem);*/
     font-size: 1.5rem;
     text-align: center;
+}
+
+/*--- LUR Page---*/
+
+.poster_and_contents{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 70rem;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.poster_and_contents img{
+    order: 1;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.poster_and_contents .LUR_content{
+    order: 2;
+    padding: 2rem;
+    
+}
+
+.poster_and_contents p{
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+.LUR_trailer{
+    padding: 2rem;
+    display: block;
+    width: 80%;
+    max-width: 800px; 
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
 }

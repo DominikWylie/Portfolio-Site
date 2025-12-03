@@ -6,6 +6,20 @@
     #hamburger-nav{
         display:flex;
     }
+
+    /*--- LUR page */
+
+    .poster_and_contents{
+        flex-direction: column;
+    }
+
+    .poster_and_contents img{
+        order: 2;
+    }
+
+    .poster_and_contents .LUR_content{
+        order: 1;
+    }
 }
 
 @media (max-width: 768px) {
