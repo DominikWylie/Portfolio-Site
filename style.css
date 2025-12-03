@@ -175,6 +175,16 @@ a {
 
 /* body */
 
+#cover-statement{
+    padding-top:2rem;
+    padding-bottom:2rem;
+    padding-left:clamp(1rem, 7vw, 4rem);
+    padding-right:clamp(1rem, 7vw, 4rem);
+    /*padding-left:4rem;*/
+    /*padding-right:4rem;*/
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
 .projects{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
