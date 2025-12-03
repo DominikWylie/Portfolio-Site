@@ -7,3 +7,31 @@
         display:flex;
     }
 }
+
+@media (max-width: 768px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr); /* 1 column on narrow screens */
+    }
+
+    .project-card img {
+        height: clamp(1.5rem, 30vw, 50rem);
+    }
+
+    .project-card h2 {
+        font-size: clamp(0.5rem, 4vw, 1.5rem);
+    }
+}
+
+@media (max-width: 440px) {
+    .projects {
+        grid-template-columns: 1fr; /* 1 column on narrow screens */
+    }
+
+    .project-card img {
+        height: clamp(1.5rem, 50vw, 50rem);
+    }
+
+    .project-card h2 {
+        font-size: clamp(0.5rem, 6vw, 1.5rem);
+    }
+}
