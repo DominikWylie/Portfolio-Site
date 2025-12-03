@@ -6,28 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
 </head>
 <body>
 <div id="header-container"></div>
 
-<!--<main class="projects">-->
-<!--    <a href="project1" class=""-->
-<!--</main>-->
-
-
-<!--
-<section id="profile">
-    <div class="section__pic-container">
-        <img src="./assets/images/tempProfilePic.jpg" alt="Temp profile pic">
-    </div>
-</section>
--->
 <script src="script.js"></script>
 <script>
     // Load header dynamically
-    fetch('header.html')
+    fetch('../header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
