@@ -248,7 +248,7 @@ a {
     margin: 0 auto;
 }
 
-.itch_io_image{
+.external_link_img{
     display: block;
     width: 50%;
     min-width: 10rem;
@@ -257,18 +257,38 @@ a {
     padding: 0.5rem;
 }
 
-.pulse_img{
+.wiggle_img{
     transition: transform 0.3s ease;
+    /*transform: rotate(0deg) scale(1);*/
 }
 
-.pulse_img:hover {
-    animation: pulse 1s infinite alternate ease-in-out;
+.wiggle_img:hover {
+    animation: wiggle 1.2s infinite ease-in-out;
+    
+    /*animation: wiggle 0.6s infinite ease-in-out;*/
 }
 
 @keyframes "pulse" {
     0%   { transform: scale(1); }
-    50%  { transform: scale(1.1); } /* grows 10% bigger */
+    50%  { transform: scale(1.1); }
     100% { transform: scale(1); }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wiggle {
+    0%   { transform: rotate(5deg); }
+    25%  { transform: rotate(-5deg); }
+    50%  { transform: rotate(5deg); }
+    75%  { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
 }
 
 /*.window_grid img{*/
@@ -295,7 +315,7 @@ a {
 
     justify-content: center;
     width: 100%;
-    max-width: 70rem;
+    max-width: 90rem;
     margin: 0 auto;
 }
 
@@ -336,7 +356,24 @@ a {
 .logos img{
     display: block;
     margin: 0 auto;
-    max-width: 100%;
-    max-height: 15rem;
+    max-width: 25rem;
+    max-height: 10rem;
     object-fit: contain;
+}
+
+/*---- tools page ----*/
+
+.tools_description{
+    width: 60rem;
+    margin: 0 auto;
+}
+
+.tools_video{
+    padding: 2rem;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
 }

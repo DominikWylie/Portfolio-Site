@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
+</head>
+<body>
+<div id="header-container"></div>
+
+<main>
+    <p class="tools_description">
+        For my tools module in university i was tasked in taking a basic world editor
+        inspired by the World of Warcraft Editor and adding functionality to aid artists
+        and designers. I added picking functionality, camera functionality and for my
+        primary addition I created a gizmo.
+
+        The gizmo lets the user move the object(s) in linear directions or planar directions
+        by selecting different parts of he gizmo and dragging. the user can also rotate the
+        object in any direction and scale in any direction or in all directions with the scroll wheel.
+    </p>
+
+    <a class="external_link_img" href="https://github.com/DominikWylie/WFFC-Edit">
+        <img class="wiggle_img external_link_img" src="../assets/images/github.png" alt="">
+    </a>
+
+    <iframe class="tools_video"
+            width="1264"
+            height="711"
+            src="https://www.youtube.com/embed/OWcHAxYrDIY"
+            title="Tools programming demonstration"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
+
+<!--    <iframe -->
+<!--            src="../assets/pdfs/toolsReport.pdf"-->
+<!--            type="application/pdf"-->
+<!--            frameBorder="0"-->
+<!--            scrolling="auto"-->
+<!--            height="100%"-->
+<!--            width="100%"-->
+<!--    >-->
+<!--    </iframe>-->
+
+    <div id="pdf-viewer" style="height: 500px"></div>
+    <script async type="module">
+        import EmbedPDF from 'https://snippet.embedpdf.com/embedpdf.js';
+
+        const viewer = EmbedPDF.init({
+            type: 'container',
+            target: document.getElementById('pdf-viewer'),
+            src: '../assets/pdfs/toolsReport.pdf'
+        });
+    </script>
+</main>
+
+<script src="../header-script.js"></script>
+<script>
+    // Load header dynamically
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>
