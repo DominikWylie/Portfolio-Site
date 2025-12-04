@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
+</head>
+<body>
+<div id="header-container"></div>
+
+<main class="honors_project_main">
+    <div class="honors_project_imgs">
+        <img src="../assets/images/5GSetupPhotoAnnotated.png" alt="">
+        <img src="../assets/images/5GSetupPhotoAnnotated2.png" alt="">
+        <img src="../assets/images/NetworkDiagramFinal.png" alt="">
+    </div>
+    <p>
+        For my honors project I researched in to offloading VR to Edge servers over 5G. I chose this project 
+        to learn more about networking, which is the area of programming and development I felt the weakest 
+        in, and to try developing for VR.
+        <br><br>
+        Reducing the HMDs size and weight will reduce the strain on the users neck and reduce the heat 
+        coming from the device with the computation happening elsewhere. This will let the users move faster 
+        and for longer.
+        <br><br>
+        The goal was do research and develop a networked solution to offload and stream VR from a server to a 
+        client. This research can be continued and used to aid in research to develop VR headsets (HMDs) that 
+        are smaller, lighter, more accessible and easier to use. the main practical application i has in mind 
+        was technology to improve VR Arenas – an in person active activity where multiple people are in a large 
+        area using VR headsets to play games together from shooting NPC enemies to playing VR enhanced sport.
+        <br><br>
+        I tested the latencies of my setup and cross-references them with other word that describes the maximum 
+        and ideal latencies. I concluded that in my setup the latencies I achieved were not fast enough for playable VR. 
+        I achieved an average round trip delay of 80ms where other research shows that a maximum of 50ms is needed to 
+        adequate VR and 15-20ms is needed for an ideal setup.
+
+    </p>
+</main>
+
+<script src="../header-script.js"></script>
+<script>
+    // Load header dynamically
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>

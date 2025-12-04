@@ -51,8 +51,14 @@ p {
 
 /* transition */
 
-a,
-.btn {
+/*a,*/
+/*.btn {*/
+/*    display: inline-block;*/
+/*    transition: all 300ms ease;*/
+/*}*/
+
+#site-header a,
+#site-header .btn {
     display: inline-block;
     transition: all 300ms ease;
 }
@@ -382,5 +388,52 @@ a {
     max-width: 100vh;
     /*justify-content: center;*/
     margin: 0 auto;
+}
 
+/*---- honours page ----*/
+
+.honors_project_main{
+    display: flex;
+    align-items: center;
+    max-width: 70rem;
+    /*justify-content: center;*/
+    margin: 0 auto;
+}
+
+.honors_project_imgs{
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    width: 100%;
+    /*order: 1;*/
+}
+
+.honors_project_imgs img{
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.honors_project_main p{
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+/*---- boids page ----*/
+
+.boids_description{
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 80rem;
+
+    margin: 0 auto;
+}
+
+.maths{
+    text-align: center;
+    font-size: 25px;
+}
+
+.coding_train_link{
+    color: var(--accent-color);
+    text-decoration: underline;
 }

@@ -24,6 +24,21 @@
     .ending_images_and_logos{
         flex-direction: column;
     }
+
+    /*--- honors page */
+
+    .honors_project_main{
+        flex-direction: column-reverse;
+    }
+    
+    .honors_project_main p{
+        padding: 2rem;
+    }
+
+    .honors_project_imgs img{
+        padding: 0;
+        padding-bottom: 2rem;
+    }
 }
 
 @media (max-width: 768px) {

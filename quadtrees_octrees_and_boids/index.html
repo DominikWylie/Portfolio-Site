@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
+</head>
+<body>
+<div id="header-container"></div>
+<div class="boids_description">
+    <h1>Quadtrees, Octrees and Boids</h1>
+    <p>
+        As a personal project I wanted to create Boids algorithm out of a fascination for
+        autonomous AI interactions and emergent properties. This, and the simple nature of
+        the algorithm made it a good candidate for a project to deepen my understanding of
+        game AI and natural simulations.
+        <br><br>
+    </p>
+    <h2>
+        Spacial Partitioning
+    </h2>
+    <p>
+        I wanted to build my octrees in 3D and performance was not a consideration as this
+        will only be an educational prototype - so I chose Unreal Engine due to my familiarity.
+        <br><br>
+        I went through and begun building the boids, I had them purely moving forward when I
+        started connecting then together, I very quickly discovered a project-halting bottleneck,
+        any more than around 40 boid actors and the project would begin to crawl. This was because
+        every boid was checking the location and direction of each other boid.
+        Each new boid will add an exponential amount of compute.
+        <br><br>
+    </p>
+    <p class="maths">
+        O(n<sup>2</sup>)
+        <br><br>
+    </p>
+    <p>
+        I learned the solution is Octrees, a spacial partitioning algorithm that pre orginises
+        all the nodes and then queried only sends back a few compared to hundreds. I begin by
+        following
+        <a class="coding_train_link" href="https://www.youtube.com/watch?v=OJxEcs0w_kE">Coding Challenge #98.1:
+            Quadtree</a>
+    </p>
+</div>
+
+
+<script src="../header-script.js"></script>
+<script>
+    // Load header dynamically
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>
