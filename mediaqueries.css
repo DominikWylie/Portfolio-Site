@@ -20,6 +20,10 @@
     .poster_and_contents .LUR_content{
         order: 1;
     }
+    
+    .ending_images_and_logos{
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
