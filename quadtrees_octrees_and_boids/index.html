@@ -39,12 +39,238 @@
         <br><br>
     </p>
     <p>
-        I learned the solution is Octrees, a spacial partitioning algorithm that pre orginises
-        all the nodes and then queried only sends back a few compared to hundreds. I begin by
-        following
-        <a class="coding_train_link" href="https://www.youtube.com/watch?v=OJxEcs0w_kE">Coding Challenge #98.1:
-            Quadtree</a>
+        I learned the solution is Octrees, a spacial partitioning algorithm that pre-organises
+        all the nodes and then queried only sends back a few compared to hundreds. I followed a tutorial by coding train
+        -
+        <a class="text_link" href="https://www.youtube.com/watch?v=OJxEcs0w_kE">Coding Challenge #98.1: Quadtree</a>
+        as it was in JavaScript, and I was coding it in C++ so I would still have to think about what I was coding.
+        This was a fairly big step up from my previous expereince making linked lists - but I understood all the
+        seperate pieces,
+        recursion, pointers, trees, etc, so I decided to start with 2D quadtrees in c++ SFML as its familiar and I can
+        focus on the algorithm.
+        <br><br>
+        The 2D project took me a few weeks to complete in my spare time. In the program you draw nodes with your
+        mouse and the quadtree organises them splitting until all octants hold the max number of nodes or less.
+        I also implemented a simple tree query as querying is an important and relativity easy part of the algorithm.
+        <br><br>
+        I learned so much about not only the algorithm, but also about pointers, recursion, single source of truth.
+        I planned to get the algorithm working live, it worked to be built once and updated with new nodes but as soon
+        as
+        I had it rebuilding every frame I found a massive memory leak somewhere in the code. This was because I was
+        using
+        raw pointers and I was keeping memory management in my head and making sure to delete the procreate memory in
+        the destructors but I missed something somewhere. I dug through trying to find th problem but eventually decided
+        I
+        will fix it with garbage collection and decided to learn smart pointers. Even though i never managed to get it
+        running in tick, the project was still a success as I achieved a basic octree algorithm.
     </p>
+
+    <a class="external_link_img" href="https://github.com/DominikWylie/QuadTrees">
+        <img class="wiggle_img external_link_img" src="../assets/images/github.png"
+             alt="https://github.com/DominikWylie/QuadTrees">
+    </a>
+
+    <iframe class="demo_video"
+            width="1264"
+            height="711"
+            src="https://www.youtube.com/embed/VXjG6hzfBpg"
+            title="Quadtrees SFML"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
+
+    <p>
+        After finishing this my 4th year of uni begun, so the project took a seat while I worked on my dissertation.
+        <br><br>
+    </p>
+
+    <h1>
+        Octrees
+    </h1>
+
+    <p>
+        Once Uni had ended, I jumped straight back on this project with a much deeper knowledge of c++. I was back on
+        UE5 and ready to take on octrees.
+        I followed <a class="text_link"
+                      href="https://gamedev.net/articles/programming/general-and-gameplay-programming/introduction-to-octrees-r3529/">
+        Eric Nevala's Introduction to Octrees</a> as I liked the more technical explanations and their detail in both
+        the simplest method
+        and more complex methods that will continue to increase efficacy. I focused on getting it working, so stayed
+        with the simplest "brute force" method
+        where the entire octree is rebuilt every frame.
+        <br><br>
+        I am still very interested in efficiency, so I looked in to making the octrees as efficient as I can on the
+        Unreal's side. I used a single actor
+        to hold the root node with an actor-based parent class and all child nodes are using a pure c++ class and are
+        outside of unreals systems.
+        this means unreal only has one actor to deal with and all inputs/outputs have one point of entry/exit so reduces
+        complexity of the system
+        and increases encapsulation. The root octree actor is a data only blueprint, but I added visualisation with
+        debug boxes fir development and debugging.
+        this way there will be no wasted compute on a shipping build. I also crated a simple In Editor tool where the
+        developer can drop in the octree and drag
+        2 opposite corners to position the octree wherever they want with any cuboid shape they want. The debug lines
+        show In Editor also and the developer
+        can toggle the lines on and off.
+    </p>
+
+    <a class="external_link_img" href="https://github.com/DominikWylie/Octree">
+        <img class="wiggle_img external_link_img" src="../assets/images/github.png"
+             alt="https://github.com/DominikWylie/QuadTrees">
+    </a>
+
+    <iframe class="demo_video"
+            width="1264"
+            height="711"
+            src="https://www.youtube.com/embed/yIewcsyz7Zo"
+            itle="boids octree demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
+
+    <p>
+        I created the algorithm as a UE5 plugin as I'm interested in making code others can take and use themselves.
+        this includes a generic interface the user can attach to any class that they want to track in the octree,
+        the octree only ever deals with the interface so the user can add or remove any parameters
+        (apart from get position() and kill() as position is needed for the octree and kill is called when
+        the node is outwith the octree). This means the octree has potential to be used for other applications outwith
+        Boids even though untested. The Octree git repo is a separate repo I brought in to my full UE5 Boids project
+        using git subtrees. I used this for three reasons - because I can work on the octree plugin as while inside the
+        full project and
+        I can push octree changes to the remote octree origin, the octree plugin is easily downloadable for others, and
+        the boids repo
+        is plug and play for anyone interested without needing to do any of their own interaction with git e.g.
+        submodules.
+        <br><br>
+    </p>
+
+    <h2>
+        The Algorithm
+    </h2>
+
+    <p>
+        Octrees and quadtrees and a spacial partitioning algorithm - meaning it takes a certain piece of space and
+        orginises
+        them in to discrete pieces. This is done for spacial querying where many nodes (node being a single 2D/3D
+        coordinate)
+        exist in a world and interact with each other like collision detection which is the exact case for boids.
+        It is also use for voxel worlds as it can efficiently store empty space. My algorithm is the simple form where
+        it
+        rebuilds the entire tree every frame, this feels inefficient, but it is still much faster to rebuild and handle
+        all
+        the queries than let the boids check all other boids.
+        <br><br>
+        Each frame, the tree starts with a list of all boids, if a boid is outside the main area it calls a kill
+        function in
+        the interface. It then checks if the amount is larger than the max per octant, if so, it sends the list of boids
+        to all 8 octants.
+        The octants check the same thing, if it's in the area, but it is just ignored if not. if there's too many, they
+        get sent to 8 child
+        octants in the correct position and the recursion begins. All octant objects are <span class="code_snippet">TUniquePtr</span>
+        so deletion each frame is handled correctly.
+        <br><br>
+        The nodes query the octree by asking for a sphere (centre and extent), and the octree does sphere-AABB (axis
+        aligned cubid) intersection
+        test. if they intersect - if its a leaf (octant with no children) send back the node interface pointers, if it's
+        got children,
+        the child octant is called with the same test.
+        <br><br>
+        The octree only interacts with a raw pointer pointing to the nodes interface. This ensures single source of
+        truth
+        and reduces the chance of accidental modification of the original data.
+        (It would be wrong to say zero chance as restricted data is a compiler rule).
+        <br><br>
+    </p>
+
+    <h1>
+        Boids
+    </h1>
+
+    <p>
+        I've wanted to build this for years, the emergent properties, elegant simplicity. ive always been interested in
+        coding ai
+        that behaves organically and interacts with the world like Cities: Skylines and the Game of Life.
+        Each boid queries the octree for the boids around it in the desired sphere. <span class="code_snippet">CalculateTrajectory
+        (Octree->NodeQuery(GetActorLocation(), boidPreset->VisualRange), DeltaTime);</span> It gets the boids and does a
+        sphere point collision
+        as the octree may return boids outside the influince. I just move the forward rudimentarily with <span
+            class="code_snippet"> 
+        SetActorLocation(GetActorLocation() + (GetActorForwardVector() * boidPreset->Speed * DeltaTime)); </span>
+    </p>
+
+    <a class="external_link_img" href="https://github.com/DominikWylie/Boids">
+        <img class="wiggle_img external_link_img" src="../assets/images/github.png"
+             alt="">
+    </a>
+    
+    <p>
+        The first check in <span class="code_snippet">CalculateTrajectory()</span> checks if the boid is going to move
+        out of
+        the octree area, if so it turns back to the centre until its no longer in the outer buffer zone.
+    </p>
+    
+    <pre class="code_snippet formatted_code_snippet">
+        
+        for (IOctreeInterface*& boid : Boids) {
+            if (boid == this) continue;
+
+		    FVector boidPosition = boid->GetPosition();
+		    double BoidDistanceSquared = FVector::DistSquared(boidPosition, ActorLocation);
+
+		    //only care about within visual range and not protected range
+		    if (BoidDistanceSquared < VisualRangeSquared && BoidDistanceSquared > ProtectedRangeSquared) {
+
+			    //cohesion
+			    PositionAverage += boidPosition;
+			
+			    //alignment - direction and speed
+			    ForwardAverage += boid->GetForwardVector();
+			    SpeedAverage += boid->GetSpeed();
+			
+			    NeighboringBoids++;
+		    }
+		    else if (BoidDistanceSquared < ProtectedRangeSquared) {
+			    //seperation
+			    CloseBoidPositionAverage += ActorLocation - boidPosition;
+		    }
+	    }
+    </pre>
+
+    <p>
+        Thats the meat of the logic!
+        <br><br>
+        <span class="bold">Cohesion</span> - The Boid aims for the average position or 'centre of mass' of the group.
+        (excluding the boids in the protected area)
+        <br>
+        <span class="bold">Alignment</span> - The Boid aims for the average forward of the group. (excluding the boids
+        in the protected area)
+        <br>
+        <span class="bold">Separation</span> - If there are any boids in the protected range. move away from their
+        average position.
+        <br><br>
+        The traditional algorithm incorporates speed modulation in to the forward vector as its built on top of a custom
+        non-normalized forward
+        where I am working with Unreal's normalised <span class="code_snippet">GetActorForwardVector();</span> so I just
+        took the distance away
+        from the centre, if it's too far behind it speeds up slightly and too far forward it slows down slightly. this
+        was to fix an issue where the
+        boids would cohere in all directions but would make these elongated shapes that wouldn't change.
+    </p>
+
+    <iframe class="demo_video"
+            width="831"
+            height="831"
+            src="https://www.youtube.com/embed/CzP-K4E0Bds"
+            title="Boids demonstration"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
 </div>
 
 

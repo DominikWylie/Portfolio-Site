@@ -253,10 +253,6 @@ a {
     
 }
 
-.poster_and_contents p{
-    font-size: clamp(0.85rem, 2vw, 1rem);
-}
-
 .LUR_trailer{
     padding: 2rem;
     display: block;
@@ -269,7 +265,7 @@ a {
 
 .external_link_img{
     display: block;
-    width: 50%;
+    width: 35%;
     min-width: 10rem;
     height: auto;
     margin: 0 auto;
@@ -369,10 +365,12 @@ a {
 
 .tools_description{
     width: 60rem;
+    max-width: 100%;
+    padding: 1rem;
     margin: 0 auto;
 }
 
-.tools_video{
+.demo_video{
     padding: 2rem;
     display: block;
     width: 80%;
@@ -413,7 +411,10 @@ a {
     padding-top: 0;
 }
 
-.honors_project_main p{
+.honors_project_main p, 
+.boids_description p,
+.boids_description pre,
+.poster_and_contents p{
     font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
@@ -422,10 +423,15 @@ a {
 .boids_description{
     display: flex;
     flex-direction: column;
-    
     max-width: 80rem;
-
     margin: 0 auto;
+}
+.boids_description p,
+.boids_description h1,
+.boids_description h2{
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 .maths{
@@ -433,7 +439,28 @@ a {
     font-size: 25px;
 }
 
-.coding_train_link{
+.text_link{
     color: var(--accent-color);
     text-decoration: underline;
+}
+
+.code_snippet{
+    background-color: rgb(22, 25, 21);
+    border-radius: 0.2rem;
+}
+
+.formatted_code_snippet{
+    overflow-x: auto;       
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.bold{
+    font-weight: bold;
 }
