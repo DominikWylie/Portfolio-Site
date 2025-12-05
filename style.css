@@ -208,16 +208,23 @@ a {
 .projects{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-auto-flow: row dense;
     gap: 2rem;
-    padding: 2rem;
+    max-width: 100%;
+    /*padding: 2rem;*/
 }
 
 .project-card img {
     display: block;
-    height: clamp(13rem, 15vw, 50rem);
+    width: 90%;
+    max-width: 30rem;
+    max-height: 100%;
+    /*height: clamp(13rem, 15vw, 50rem);*/
+    /*max-width: 20rem;*/
+    /*height: clamp(12rem, 15vw, 20rem);*/
     margin: 0 auto;
     border-radius: 0.5rem;
-    
 }
 
 .project-card h2 {
@@ -225,6 +232,11 @@ a {
     /*font-size: clamp(0.5rem, 15vw, 1.5rem);*/
     font-size: 1.5rem;
     text-align: center;
+}
+
+.full_grid_span{
+    grid-column: span 3;
+    max-width: 20rem;
 }
 
 /*--- LUR Page---*/
@@ -390,7 +402,8 @@ a {
 
 /*---- honours page ----*/
 
-.honors_project_main{
+.honors_project_main,
+.fallout_packers_main{
     display: flex;
     align-items: center;
     max-width: 70rem;
@@ -398,7 +411,8 @@ a {
     margin: 0 auto;
 }
 
-.honors_project_imgs{
+.honors_project_imgs,
+.fallout_packers_imgs{
     display: flex;
     flex-direction: column;
     max-width: 30rem;
@@ -406,7 +420,8 @@ a {
     /*order: 1;*/
 }
 
-.honors_project_imgs img{
+.honors_project_imgs img,
+.fallout_packers_imgs img{
     padding: 2rem;
     padding-top: 0;
 }
@@ -414,13 +429,17 @@ a {
 .honors_project_main p, 
 .boids_description p,
 .boids_description pre,
-.poster_and_contents p{
+.poster_and_contents p,
+.portals_project_main p,
+.shaders_description_main p{
     font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
 /*---- boids page ----*/
 
-.boids_description{
+.boids_description,
+.portals_project_main,
+.shaders_description_main{
     display: flex;
     flex-direction: column;
     max-width: 80rem;
@@ -428,7 +447,9 @@ a {
 }
 .boids_description p,
 .boids_description h1,
-.boids_description h2{
+.boids_description h2,
+.portals_project_main p,
+.shaders_description_main p{
     padding: 1rem;
     padding-bottom: 0;
     padding-top: 0;

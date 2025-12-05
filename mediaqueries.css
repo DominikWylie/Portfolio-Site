@@ -47,7 +47,7 @@
     }
 
     /*.project-card img {*/
-    /*    height: clamp(1.5rem, 30vw, 50rem);*/
+    /*    height: clamp(12rem, 40vw, 20rem);*/
     /*}*/
 
     .project-card h2 {
@@ -60,9 +60,9 @@
         grid-template-columns: 1fr; /* 1 column on narrow screens */
     }
 
-    .project-card img {
-        height: clamp(1.5rem, 50vw, 50rem);
-    }
+    /*.project-card img {*/
+    /*    height: clamp(1.5rem, 50vw, 50rem);*/
+    /*}*/
 
     .project-card h2 {
         font-size: clamp(0.5rem, 6vw, 1.5rem);

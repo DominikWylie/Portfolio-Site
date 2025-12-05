@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
+</head>
+<body>
+<div id="header-container"></div>
+
+<main class="fallout_packers_main">
+    <div class="fallout_packers_imgs">
+        <img src="../assets/images/falloutPackersimg1.jpg" alt="">
+        <img src="../assets/images/falloutPackersimg2.jpg" alt="">
+    </div>
+    <p>
+        Fallout Packers is a game where you are in an apocalypse and need to survive by crafting, farming and 
+        venturing out to the wilderness. To do this you need to find tools and supplies, pack your bag properly to 
+        bring supplies with you like food and tools like an axe or wrench which will change your chances of getting 
+        better loot and specific loot to the tool. To make it to the next day with the aim to find your family.
+        <br><br>
+        We made the game in unity 2D for a week long game jam. I focused on the items, physics based storage and 
+        crafting system. The storage included a rucksack and chest where the items in the chest stay in the hut and 
+        the items in the rucksack get brought with you in expeditions. The crafting system included checking all the 
+        craftable items and checking the recipes against the available items and if the player chooses an item to 
+        craft, the required items disappear and the crafted item falls in to view.
+        <br><br>
+        I also created a designer friendly interface and data structure for the designers to add as many items and 
+        as many items to the recipes as they wanted. This meant the designers could easily iterate on gameplay balancing 
+        while I continue to develop. Adding a new item was easy as all it required was setting up collision and adding it 
+        to the crafting list with a few clicks.
+    </p>
+</main>
+
+<a class="external_link_img" href="https://github.com/dragon81655/FreshersGameJam24">
+    <img class="wiggle_img external_link_img" src="../assets/images/github.png"
+         alt="https://github.com/DominikWylie/QuadTrees">
+</a>
+
+<script src="../header-script.js"></script>
+<script>
+    // Load header dynamically
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>

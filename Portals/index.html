@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mediaqueries.css">
+</head>
+<body>
+<div id="header-container"></div>
+
+<main class="portals_project_main">
+    <p>
+        I created an unreal project based off a UE5 portals demonstration for my 2nd 
+        year game mechanics class. My main aim was to get the portals working but instead of the YouTuber I 
+        was following did it all in blueprints I did almost all of it in c++. The 
+        portals are visually and physically functioning.
+    </p>
+
+    <iframe class="demo_video"
+            width="608" 
+            height="342" 
+            src="https://www.youtube.com/embed/Z5CPbS0qPqs" 
+            title="CMP302 Portals" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+    </iframe>
+    
+    <p>
+        They work using cameras taking the player’s camera position and translating it to the 
+        exit portal, and using that render in a texture and placing it on the first portal. 
+        There were a few things to work out with the fov being different between the camera 
+        and the portal frame, and fixing “banana juice” the effect of seeing things before 
+        the portal because of the positioning of the camera. I achieved going through the 
+        portals, and going through them at different angles and resetting the camera angle smoothly.
+    </p>
+</main>
+
+<script src="../header-script.js"></script>
+<script>
+    // Load header dynamically
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>
