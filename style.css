@@ -261,6 +261,7 @@ a {
     max-width: 100%;
     height: auto;
     display: block;
+    border-radius: .3rem;
 }
 
 .poster_and_contents .LUR_content{
@@ -318,6 +319,7 @@ a {
     0%   { transform: rotate(5deg); }
     25%  { transform: rotate(-5deg); }
     50%  { transform: rotate(5deg); }
+    50%  { transform: rotate(5deg); }
     75%  { transform: rotate(-5deg); }
     100% { transform: rotate(5deg); }
 }
@@ -352,6 +354,8 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: .3rem;
+
 }
 
 .screenshot_panels .top_screenshot_panel{
