@@ -5,9 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
+    <meta name="author" content="Dominik Wylie">
+    <meta name="description" content="My portfolio showing games programming projects including games, 
+    personal tech and Uni projects">
+    <title>Dominik Wylie</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./assets/images/favicon64.png">
 </head>
 <body>
 <div id="header-container"></div>
@@ -62,7 +68,7 @@
     </a>
 </main>
 
-<div class="tools-pdf-wrapper">
+<div id="CV" class="tools-pdf-wrapper">
     <object
             data="./assets/pdfs/CVDominikWylie.pdf#toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&scrollbar=0"
             type="application/pdf"
@@ -79,6 +85,15 @@
         .then(data => {
             document.getElementById('header-container').innerHTML = data;
         });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 </script>
 </body>
 </html>
