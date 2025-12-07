@@ -384,8 +384,8 @@ a {
 /*---- tools page ----*/
 
 .tools_description{
-    width: 60rem;
-    max-width: 100%;
+    max-width: 60rem;
+    /*width: 100%;*/
     padding: 1rem;
     margin: 0 auto;
 }
@@ -413,9 +413,11 @@ a {
 .honors_project_main,
 .fallout_packers_main{
     display: flex;
+    justify-content: center;
     align-items: center;
     max-width: 70rem;
     /*justify-content: center;*/
+    flex-direction: row;
     margin: 0 auto;
 }
 
@@ -430,8 +432,7 @@ a {
 
 .honors_project_imgs img,
 .fallout_packers_imgs img{
-    padding: 2rem;
-    padding-top: 0;
+    padding: 1rem;
 }
 
 .honors_project_main p, 

@@ -39,6 +39,10 @@
         padding: 0;
         padding-bottom: 2rem;
     }
+
+    .fallout_packers_main{
+        flex-direction: column-reverse;
+    }
 }
 
 @media (max-width: 1150px) {
