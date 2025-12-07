@@ -39,6 +39,8 @@ body {
 
     background-color: var(--background-color);
     color: var(--text-color);
+    
+    padding-bottom: 20rem;
 }
 
 html {
