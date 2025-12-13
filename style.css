@@ -247,13 +247,17 @@ a {
 
 /*--- LUR Page---*/
 
+.LUR_contents{
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
 .poster_and_contents{
     display: flex;
     align-items: center;
     gap: 1rem;
 
     width: 100%;
-    max-width: 70rem;
     margin: 0 auto;
     justify-content: center;
 }
@@ -266,10 +270,13 @@ a {
     border-radius: .3rem;
 }
 
-.poster_and_contents .LUR_content{
+.poster_and_contents .LUR_head_content{
     order: 2;
     padding: 2rem;
-    
+}
+
+.LUR_main_content{
+    padding-top: 1rem;
 }
 
 .LUR_trailer{
@@ -440,7 +447,7 @@ a {
 .honors_project_main p, 
 .boids_description p,
 .boids_description pre,
-.poster_and_contents p,
+.LUR_contents p,
 .portals_project_main p,
 .shaders_description_main p{
     font-size: clamp(0.85rem, 2vw, 1rem);

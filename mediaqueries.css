@@ -17,12 +17,16 @@
         order: 2;
     }
 
-    .poster_and_contents .LUR_content{
+    .poster_and_contents .LUR_head_content{
         order: 1;
     }
     
     .ending_images_and_logos{
         flex-direction: column;
+    }
+
+    .LUR_main_content{
+        padding: 2rem;
     }
 
     /*--- honors page */

@@ -15,10 +15,10 @@
 <body>
 <div id="header-container"></div>
 
-<main class="contents">
+<main class="LUR_contents">
     <div class="poster_and_contents">
         <img src="../assets/images/LURMain.webp" alt="LeftUponReadMain">
-        <div class="LUR_content">
+        <div class="LUR_head_content">
             <h1>Left Upon Read</h1>
             <p>Left Upon read is a – dark fantasy, fast-paced, multitasking, combat game, where you need to
                 navigate dungeons, kill enemies with your sword and magic while balancing responding to text
@@ -43,40 +43,96 @@
             </p>
         </div>
     </div>
-    <iframe class="LUR_trailer"
-            width="1264" 
-            height="711" 
-            src="https://www.youtube.com/embed/T98mhgMhRBU" 
-            title="Left Upon Read - Official Trailer" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-    </iframe>
+    <div class="LUR_main_content">
+        <h1>
+            The rewrite
+        </h1>
 
-    <a class="external_link_img" href="https://triple7studios.itch.io/left-upon-read">
-        <img class="wiggle_img external_link_img" src="../assets/images/itchio_link_img.png" href="https://triple7studios.itch.io/left-upon-read" alt="itch_io_image">
-    </a>
-    
-    <div class="ending_images_and_logos">
-        <div class="screenshot_panels">
-            <img class="top_screenshot_panel" src="../assets/images/top_LUR_panel_artwork.webp" alt="">
-            <img src="../assets/images/LUR_window_top_left.png" alt="">
-            <img src="../assets/images/LUR_window_top_right.png" alt="">
-            <img src="../assets/images/LUR_window_bottom_left.png" alt="">
-            <img src="../assets/images/LUR_window_bottom_right.png" alt="">
-        </div>
-        
-        <div class="logos">
-            <img src="../assets/images/dare_logo.png" alt="">
-            <img src="../assets/images/Triple7Logo_Long_Black.png" alt="">
-            <img src="../assets/images/logo_black-monochrome_a3.png" alt="">
-            <img src="../assets/images/gigf.png" alt="">
-            <img src="../assets/images/TIGA-Education-Awards.png" alt="">
-            <img src="../assets/images/Unreal_Engine_Logo.svg_.png" alt="">
-        </div>
+        <p>
+            We are currently rewriting the game from scratch. We decided this because of a variety of reasons but mainly
+            because of the state of the codebase. There was a huge amount iteration to find the fun of the game so there
+            was a lot of code that was being used but in ways that weren't clean and necessary. we have been working on
+            this project for around three years now, and our code skills have increased dramatically since then.
+            We decided that it is time to pay back out technical debts and structure the codebase in a much better way
+            that will be able to carry a multiple hour experience game.
+            <br><br>
+        </P>
+        <h2>
+            The messaging system - Designer tools, Data management and UI
+        </h2>
+        <p>
+            My first task was to rebuild the phone messaging system. I crated a designer tool with Data assets so
+            designers can easily add characters and messages seamlessly. I seperated the data assets out by character to
+            work around the binary asset limitation. The data asset type consists of a character name, image and list of
+            messages. Each message consists of an <span class="code_snippet">FName ID</span>, initial message, an array of a struct that consists of a
+            player reply option and a character reply to that option. each character data asset is added to a character
+            message manager data asset that is attached to the message widget. This makes it easier for designers to add
+            more characters without needing to dig in to the widget blueprint and lets me encapsulate message management
+            code. I created a validator that's called with a button in the manager data asset that prints log files with
+            any issues, it checks each character has a name and image, in each message it checks for a valid ID, and
+            that the initial message has been filled. Everything else is designer optional. This runs through each entry
+            sequentially so could slow down with size but is only used in editor.
+            <br><br>
+            On game load, in the message manager data asset, I organise all the characters in to a <span class="code_snippet">TMap</span> with the
+            <span class="code_snippet">FName ID</span> as the key and a struct of a pointer to the message, and a pointer to the character. Using an <span class="code_snippet">FName</span>
+            is the standard way of creating an Unreal hashmap as <span class="code_snippet">FName</span> has an integer key associated with it and
+            performs integer comparison, so when we have many messages it will continue to be snappy. The lookup should
+            have an average time complexity of O(1) and a worse case complexity of O(n) which is nearly impossible.
+            <br><br>
+            A collider was created that includes a designer input to add any <span class="code_snippet">FName ID</span>. When the box is hit by
+            the player the referencer is used to get the phone which a function is called and the ID is passed. the
+            phone queries the message manager and the <span class="code_snippet">TMap</span> is queried with <span class="code_snippet">.Find(ID)</span> to get the message (if there is
+            one). This then goes to the widget and is displayed on the phone. The player can read the message and chose
+            an option, when an option is chosen the UI displays the chosen option and the characters reply to the
+            option.
+            <br><br>
+        </p>
+
+        <h2>
+            Creating a studio
+        </h2>
+
+        <p>
+            We are currently in the process of making this a official studio and plan to apply to the coming Tranzfuser.
+        </p>
     </div>
+
 </main>
+
+<iframe class="LUR_trailer"
+        width="1264"
+        height="711"
+        src="https://www.youtube.com/embed/T98mhgMhRBU"
+        title="Left Upon Read - Official Trailer"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+</iframe>
+
+<a class="external_link_img" href="https://triple7studios.itch.io/left-upon-read">
+    <img class="wiggle_img external_link_img" src="../assets/images/itchio_link_img.png"
+         href="https://triple7studios.itch.io/left-upon-read" alt="itch_io_image">
+</a>
+
+<div class="ending_images_and_logos">
+    <div class="screenshot_panels">
+        <img class="top_screenshot_panel" src="../assets/images/top_LUR_panel_artwork.webp" alt="">
+        <img src="../assets/images/LUR_window_top_left.png" alt="">
+        <img src="../assets/images/LUR_window_top_right.png" alt="">
+        <img src="../assets/images/LUR_window_bottom_left.png" alt="">
+        <img src="../assets/images/LUR_window_bottom_right.png" alt="">
+    </div>
+
+    <div class="logos">
+        <img src="../assets/images/dare_logo.png" alt="">
+        <img src="../assets/images/Triple7Logo_Long_Black.png" alt="">
+        <img src="../assets/images/logo_black-monochrome_a3.png" alt="">
+        <img src="../assets/images/gigf.png" alt="">
+        <img src="../assets/images/TIGA-Education-Awards.png" alt="">
+        <img src="../assets/images/Unreal_Engine_Logo.svg_.png" alt="">
+    </div>
+</div>
 
 <script src="../header-script.js"></script>
 <script>
